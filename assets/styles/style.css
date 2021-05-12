@@ -1,0 +1,27 @@
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.main {
+  flex: 1;
+}
+
+.tabbar {
+  box-shadow: 0 -2px 4px 2px #ddd;
+  display: flex;
+}
+.tabbar_button {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  height: 80px;
+  justify-content: center;
+}
+.tabbar_button:focus {
+  opacity: 0.5;
+}
