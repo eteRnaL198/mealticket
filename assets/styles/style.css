@@ -6,11 +6,20 @@ body {
   flex-direction: column;
   height: 100%;
 }
-
+.header {
+  display: flex;
+  box-shadow: 0 2px 4px 2px #ddd;
+  font-size: 1.8rem;
+  font-weight: bold;
+  justify-content: center;
+  padding: 8px;
+}
 .main {
   flex: 1;
 }
 
+
+/* tabbar */
 .tabbar {
   height: 80px;
   display: flex;
@@ -21,4 +30,45 @@ body {
   justify-content: center;
   align-items: center;
   height: 80px;
+}
+
+
+/* menuCard */
+.menuCard {
+  border: 1px solid #ddd;
+}
+.menuCard_name {
+  font-weight: bold;
+}
+
+
+/* menuDetail */
+.menuDetail {
+  box-shadow: 2px 2px 4px 2px #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40%;
+}
+
+
+/* tabbar */
+.tabbar {
+  background-color: #fff;
+  box-shadow: 0 -2px 4px 2px #ddd;
+  bottom: 0;
+  display: flex;
+  height: 10%;
+  position: sticky;
+}
+.tabbar_button {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+.tabbar_button:focus {
+  opacity: 0.5;
+>>>>>>> temp
 }
