@@ -1,37 +1,63 @@
-html {
-  height: 100%;
-}
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.header {
-  display: flex;
-  box-shadow: 0 2px 4px 2px #ddd;
-  font-size: 1.8rem;
-  font-weight: bold;
-  justify-content: center;
-  padding: 8px;
-}
-.main {
-  flex: 1;
-}
-
-
-/* tabbar */
-.tabbar {
-  box-shadow: 0 -2px 4px 2px #ddd;
-  display: flex;
-}
-.tabbar_button {
+.reserve{
+  background-color: white;
   align-items: center;
   display: flex;
-  flex: 1;
-  height: 80px;
-  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+  justify-content: space-around;
+  width: 90%;
+  margin: 0 auto;
 }
-.tabbar_button:focus {
-  opacity: 0.5;
+.menu{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0;
+}
+.code{
+  background-color: white;
+  box-shadow: 1px 1px 2px 2px #ddd;
+  align-items: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 40px;
+  height: 100px;
+}
+.code_title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+.code_num{
+  display: flex;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 0;
+}
+.form{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.form_input{
+  box-shadow: 1px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+  width: 280px;
+}
+.form_button{
+  background-color: orange;
+  font-size: 1.3rem;
+  border: 0;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  padding: 8px;
+  width: 200px;
 }
