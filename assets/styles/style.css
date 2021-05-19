@@ -32,27 +32,6 @@ body {
   height: 80px;
 }
 
-
-/* menuCard */
-.menuCard {
-  border: 1px solid #ddd;
-}
-.menuCard_name {
-  font-weight: bold;
-}
-
-
-/* menuDetail */
-.menuDetail {
-  box-shadow: 2px 2px 4px 2px #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 40%;
-}
-
-
 /* tabbar */
 .tabbar {
   background-color: #fff;
@@ -70,5 +49,4 @@ body {
 }
 .tabbar_button:focus {
   opacity: 0.5;
->>>>>>> temp
 }
