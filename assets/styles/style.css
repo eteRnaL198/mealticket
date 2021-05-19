@@ -1,3 +1,6 @@
+
+
+/* menuCard */
 .menuCard{
   border-radius: 50px;
   border: none;
@@ -15,6 +18,7 @@
 .menuCard_name {
   font-size: 2rem;
   font-weight: bold;
+
   padding-top: 30px;
   display: flex;
   justify-content: space-evenly;
