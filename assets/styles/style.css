@@ -21,13 +21,40 @@ body {
 
 /* .menuDetail */
 .menuDetail {
-  box-shadow: 2px 2px 4px 2px #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 40%;
+  /*width: 40%;*/
 }
+
+.menuDetail_name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.menuDetail_num{
+  margin-bottom: 8px;
+}
+.menuDetail_allergie {
+  font-size: 1.1rem;
+  align-self: flex-start;
+  margin-bottom: 8px;
+}
+.menuDetail_calorie {
+  font-size: 1.1rem;
+  align-self: flex-start;
+  margin-bottom: 40px;
+}
+
+.menuDetail_order {
+  padding: 8px;
+  background-color: yellow;
+  border-radius: 8px;
+}
+
+
 
 
 /* tabbar */
