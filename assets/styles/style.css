@@ -1,3 +1,8 @@
+.main {
+  flex: 1;
+}
+
+
 .reserve{
   background-color: white;
   align-items: center;
@@ -8,22 +13,17 @@
   width: 90%;
   margin: 0 auto;
 }
+
 .menu{
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   margin: 0;
 }
+
 .code{
   background-color: white;
   box-shadow: 1px 1px 2px 2px #ddd;
-  align-items: center;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 40px;
-  height: 100px;
 }
 .code_title{
   text-align: center;
@@ -31,12 +31,24 @@
   font-size: 1rem;
   margin: 0;
 }
+
 .code_num{
   display: flex;
   text-align: center;
   font-weight: bold;
   font-size: 3rem;
   margin: 0;
+}
+
+
+/* tabbar */
+.tabbar {
+  background-color: #fff;
+  box-shadow: 0 -2px 4px 2px #ddd;
+  bottom: 0;
+  display: flex;
+  height: 10%;
+  position: sticky;
 }
 .form{
   align-items: center;
@@ -50,6 +62,8 @@
   margin-bottom: 8px;
   padding: 8px;
   width: 280px;
+  flex: 1;
+  justify-content: center;
 }
 .form_button{
   background-color: orange;
