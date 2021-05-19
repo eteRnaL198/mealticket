@@ -40,16 +40,6 @@
   margin: 0;
 }
 
-
-/* tabbar */
-.tabbar {
-  background-color: #fff;
-  box-shadow: 0 -2px 4px 2px #ddd;
-  bottom: 0;
-  display: flex;
-  height: 10%;
-  position: sticky;
-}
 .form{
   align-items: center;
   display: flex;
@@ -74,4 +64,15 @@
   font-weight: bold;
   padding: 8px;
   width: 200px;
+}
+
+
+/* tabbar */
+.tabbar {
+  background-color: #fff;
+  box-shadow: 0 -2px 4px 2px #ddd;
+  bottom: 0;
+  display: flex;
+  height: 10%;
+  position: sticky;
 }
