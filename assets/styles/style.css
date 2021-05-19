@@ -6,21 +6,21 @@ body {
   flex-direction: column;
   height: 100%;
 }
-.header {
+/* .header {
   display: flex;
   box-shadow: 0 2px 4px 2px #ddd;
   font-size: 1.8rem;
   font-weight: bold;
   justify-content: center;
   padding: 8px;
-}
+} */
 .main {
   flex: 1;
 }
 
 
 /* tabbar */
-.tabbar {
+/* .tabbar {
   box-shadow: 0 -2px 4px 2px #ddd;
   display: flex;
 }
@@ -33,4 +33,4 @@ body {
 }
 .tabbar_button:focus {
   opacity: 0.5;
-}
+} */
