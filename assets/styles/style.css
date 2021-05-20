@@ -25,6 +25,72 @@ body {
 
 
 
+/* reserve screen*/
+.reserve{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  /* height: 400px; */
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.menu{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0;
+}
+.code{
+  background-color: white;
+  box-shadow: 1px 1px 2px 2px #ddd;
+  border-radius: 8px;
+  padding: 32px;
+}
+.code_title{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 0;
+}
+.code_num{
+  display: flex;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  margin: 0;
+}
+.form{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.form_input{
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 1px;
+  border-radius: 8px;
+  flex: 1;
+  font-weight: bold;
+  justify-content: center;
+  margin-bottom: 16px;
+  padding: 8px;
+  width: 280px;
+}
+.form_button{
+  background-color: orange;
+  font-size: 1.3rem;
+  border: 0;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  padding: 8px;
+  text-align: center;
+  width: 200px;
+}
+
+
+
+
 
 /* ordered */
 .ordered {
