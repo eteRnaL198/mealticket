@@ -25,6 +25,35 @@ body {
 
 
 
+
+/* ordered */
+.ordered {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 4px 2px #ddd;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 16px;
+  width: 90%;
+}
+.ordered_title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+.ordered_button {
+  background-color: orange;
+  border-radius: 32px;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 8px;
+  width: 70%;
+}
+
+
 /* tabbar */
 .tabbar {
   background-color: #fff;
