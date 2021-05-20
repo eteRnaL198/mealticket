@@ -21,7 +21,13 @@ body {
   overflow-y: scroll;
   margin: 4px 0;
 }
-
+.hidden {
+  position: absolute;
+  left: -100vh;
+}
+.pressed {
+  opacity: 0.3;
+}
 
 
 
@@ -217,7 +223,4 @@ body {
 .tabbar_icon {
   font-size: 1.8rem;
   font-weight: bold;
-}
-.tabbar_button:focus {
-  opacity: 0.3;
 }

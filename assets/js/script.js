@@ -23,6 +23,166 @@ const writeData = () => {
         name: "唐揚げ弁当",
         number: 0,
         price: 500
+      },
+      {
+        name: "デイリーランチ",
+        number: 10,
+        price: 370
+      },
+      {
+        name: "デイリーランチライス小",
+        number: 10,
+        price: 350
+      },
+      {
+        name: "デイリーランチライス大",
+        number: 10,
+        price: 420
+      },
+      {
+        name: "唐揚げ丼L",
+        number: 10,
+        price: 470
+      },
+      {
+        name: "唐揚げ丼M",
+        number: 10,
+        price: 390
+      },
+      {
+        name: "カレーライス",
+        number: 10,
+        price: 310
+      },
+      {
+        name: "カレー大盛",
+        number: 10,
+        price: 360
+      },
+      {
+        name: "ミニカレー",
+        number: 10,
+        price: 160
+      },
+      {
+        name: "生卵",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "温泉卵",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "チーズ",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "コロッケ",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "日替わりトッピング",
+        number: 10,
+        price: 80
+      },
+      {
+        name: "特別中華麺",
+        number: 10,
+        price: 540
+      },
+      {
+        name: "日替わり中華麺",
+        number: 10,
+        price: 420
+      },
+      {
+        name: "特別麺そば",
+        number: 10,
+        price: 540
+      },
+      {
+        name: "特別麺うどん",
+        number: 10,
+        price: 540
+      },
+      {
+        name: "日替わりそば",
+        number: 10,
+        price: 300
+      },
+      {
+        name: "日替わりうどん",
+        number: 10,
+        price: 300
+      },
+      {
+        name: "麺大盛+半玉",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "麺ジャンボ+1玉",
+        number: 10,
+        price: 100
+      },
+      {
+        name: "きつね",
+        number: 10,
+        price: 30
+      },
+      {
+        name: "たぬき",
+        number: 10,
+        price: 30
+      },
+      {
+        name: "竹輪天",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "カレーソース",
+        number: 10,
+        price: 90
+      },
+      {
+        name: "かき揚げ",
+        number: 10,
+        price: 50
+      },
+      {
+        name: "小鉢サラダ",
+        number: 10,
+        price: 80
+      },
+      {
+        name: "ライス大",
+        number: 10,
+        price: 150
+      },
+      {
+        name: "ライス中",
+        number: 10,
+        price: 100
+      },
+      {
+        name: "ライス小",
+        number: 10,
+        price: 80
+      },
+      {
+        name: "味噌汁",
+        number: 10,
+        price: 30
+      },
+      {
+        name: "ソフトクリーム",
+        number: 10,
+        price: 200
       }
     ]
   });
@@ -33,21 +193,19 @@ const ticketsRef = firebase.database().ref('tickets/menu');
 ticketsRef.once('value', snapshot => {
   const data = snapshot.val();
   console.log(data);
-  console.log(data.length);
   for(let i=0; i<data.length; i++) {
     const wrapper = document.getElementById("menuCard_wrapper");
-    const card = document.createElement("div");
     const name = document.createElement("p");
-    const number = document.createElement("p");
     const price = document.createElement("p");
-    card.classList.add("menuCard");
-    card.setAttribute("id", `menuCard-${i}`);
+    const card = document.createElement("button");
     name.classList.add("menuCard_name");
     name.innerHTML = data[i].name;
-    number.classList.add("menuCard_number");
-    number.innerHTML = data[i].number;
     price.classList.add("menuCard_price");
-    price.innnerHTML = data[i].price;
-    wrapper.insertAdjacentElement('beforeend', number);
+    price.innerHTML = data[i].price + "円";
+    card.classList.add("menuCard");
+    card.setAttribute("id", `menuCard-${i}`);
+    card.insertAdjacentElement("beforeend", name);
+    card.insertAdjacentElement("beforeend", price);
+    wrapper.insertAdjacentElement('beforeend', card);
   }
 });
