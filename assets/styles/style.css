@@ -25,6 +25,43 @@ body {
 
 
 
+/* menuCard */
+.menuCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 16px;
+  border: none;
+  box-shadow: 0 0 2px 2px #ddd;
+  background-color: #fff;
+  padding: 16px;
+}
+.menuCard_wrapper{
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  grid-gap: 1% 4%;
+}
+.menuCard_name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 8px;
+}
+.menuCard_number{
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+.menuCard_price{
+  font-weight: bold;
+}
+
+
+
+
 
 
 
