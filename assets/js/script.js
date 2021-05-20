@@ -11,4 +11,43 @@ const config = {
 
 firebase.initializeApp(config);
 
-// const database = firebase.database();
+const writeData = () => {
+  firebase.database().ref('tickets/').set({
+    menu: [
+      {
+        name: "唐揚げ定食",
+        number: 0,
+        price: 500
+      },
+      {
+        name: "唐揚げ弁当",
+        number: 0,
+        price: 500
+      }
+    ]
+  });
+}
+// writeData();
+
+const ticketsRef = firebase.database().ref('tickets/menu');
+ticketsRef.once('value', snapshot => {
+  const data = snapshot.val();
+  console.log(data);
+  console.log(data.length);
+  for(let i=0; i<data.length; i++) {
+    const wrapper = document.getElementById("menuCard_wrapper");
+    const card = document.createElement("div");
+    const name = document.createElement("p");
+    const number = document.createElement("p");
+    const price = document.createElement("p");
+    card.classList.add("menuCard");
+    card.setAttribute("id", `menuCard-${i}`);
+    name.classList.add("menuCard_name");
+    name.innerHTML = data[i].name;
+    number.classList.add("menuCard_number");
+    number.innerHTML = data[i].number;
+    price.classList.add("menuCard_price");
+    price.innnerHTML = data[i].price;
+    wrapper.insertAdjacentElement('beforeend', number);
+  }
+});

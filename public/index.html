@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-search-pseudo-elementsn></script>
   <link rel="stylesheet" href="../assets/styles/destyle.css">
   <link rel="stylesheet" href="../assets/styles/style.css">
   <title>Meal Ticket</title>
@@ -12,8 +13,8 @@
   <header class="header">Meal Ticket</header>
   <main class="main">
 
-    <div class="menuCard_wrapper">
-      <button class="menuCard">
+    <div class="menuCard_wrapper" id="menuCard_wrapper">
+      <!-- <button class="menuCard">
         <p class="menuCard_name">唐揚げ定食</p>
         <p class="menuCard_number">未受取10人</p>
         <p class="menuCard_price">500円</p>
@@ -182,8 +183,17 @@
         <p class="menuCard_name">ソフトクリーム</p>
         <p class="menuCard_number">未受取10人</p>
         <p class="menuCard_price">200円</p>
-      </button>
+      </button> -->
     </div>
+
+    <!-- <div class="menuDetail">
+      <p class="menuDetail_name">唐揚げ定食</p> 
+      <p class="menuDetail_num">未受取人数 10</p>
+      <p class="menuDetail_allergie">アレルギー</p>
+      <p class="menuDetail_calorie">カロリー</p>
+      <p class="menuDetail_price">500円</p>
+      <button class="menuDetail_order">注文</button>
+    </div> -->
     
     <!-- <div class="reserve">
       <p class="menu">唐揚げ定食</p>
@@ -204,11 +214,17 @@
 
   </main>
   <div class="tabbar">
-    <button class="tabbar_button">menu</button>
-    <button class="tabbar_button">order</button>
+    <button class="tabbar_button">
+      <i class="fas fa-utensils tabbar_icon"></i>
+      menu
+    </button>
+    <button class="tabbar_button">
+      <i class="fas fa-clipboard-list tabbar_icon"></i>
+      order
+    </button>
   </div>
 </body>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
 <script src="../assets/js/script.js"></script>
 </html>
