@@ -27,7 +27,6 @@ body {
   flex-direction: column;
   /*width: 40%;*/
 }
-
 .menuDetail_name {
   font-size: 1.3rem;
   font-weight: bold;
@@ -47,7 +46,6 @@ body {
   align-self: flex-start;
   margin-bottom: 40px;
 }
-
 .menuDetail_order {
   padding: 8px;
   background-color: orange;
