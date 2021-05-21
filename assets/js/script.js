@@ -193,7 +193,6 @@ const writeData = () => {
 const menuRef = firebase.database().ref('tickets/menu');
 menuRef.once('value', snapshot => {
   const data = snapshot.val();
-  console.log(data);
   for(let i=0; i<data.length; i++) {
     const wrapper = document.getElementById("js-menuCard_wrapper");
     const name = document.createElement("p");
@@ -227,7 +226,9 @@ const displayDetail = (args) => {
   const price = document.createElement('p');
   const orderButton = document.createElement('button');
   modal.classList.add("menuDetail");
+  modal.setAttribute('id', 'js-menuDetail');
   back.classList.add("menuDetail_backScreen");
+  back.setAttribute('id', 'js-backScreen');
   name.classList.add("menuDetail_name");
   name.innerHTML = args[0];
   num.classList.add("menuDetail_num");
@@ -246,8 +247,84 @@ const displayDetail = (args) => {
   back.addEventListener('click', () => {
     back.remove();
     modal.remove();
-  })
+  });
+  orderButton.addEventListener('click', () => displayTicket(args[0]));
 }
+
+//食券表示
+const displayTicket = (name) => {
+  const back = document.getElementById('js-backScreen');
+  const modal = document.getElementById('js-menuDetail');
+  const inner = document.getElementById('js-ordered_inner');
+  const none = document.getElementById('js-ordered_none');
+  const card = document.createElement('div');
+  const title = document.createElement('p');
+  const button = document.createElement('button');
+  none.classList.add('hidden');
+  title.classList.add("ordered_title");
+  title.innerHTML = name;
+  button.classList.add("ordered_button");
+  button.innerHTML = '受け取り';
+  card.classList.add("ordered_card");
+  card.insertAdjacentElement("beforeend",title);
+  card.insertAdjacentElement("beforeend",button);
+  inner.insertAdjacentElement("beforeend",card);
+  if(back !== null & modal !== null) {
+    back.remove();
+    modal.remove();
+  }
+  button.addEventListener("click", () => displayReserve(name));
+}
+
+
+//受け取り
+const displayReserve = (name) => {
+  const wrapper = document.getElementById("js-ordered_wrapper");
+  const orderedInner = document.getElementById("js-ordered_inner");
+  const reserve = document.createElement("p");
+  const back = document.createElement("button");
+  const inner = document.createElement("div");
+  const menu = document.createElement("p")
+  const code = document.createElement("div");
+  const title = document.createElement("p");
+  const num = document.createElement("p");
+  const form = document.createElement("div");
+  const input = document.createElement("input");
+  const button = document.createElement("button");
+  title.classList.add("code_title");
+  title.innerHTML = "受け取りコード";
+  num.classList.add("code_num");
+  num.innerHTML = "w4FimR5u";
+  code.classList.add("code");
+  code.insertAdjacentElement("beforeend",title);
+  code.insertAdjacentElement("beforeend",num);
+  input.classList.add("form_input");
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "確認番号を入力");
+  button.classList.add("form_button");
+  button.innerHTML = "確認";
+  form.classList.add("form");
+  form.insertAdjacentElement("beforeend",input);
+  form.insertAdjacentElement("beforeend",button);
+  menu.classList.add("menu");
+  menu.innerHTML = name;
+  back.classList.add("reserve_back");
+  back.innerHTML = "戻る";
+  inner.classList.add("reserve_inner");
+  inner.insertAdjacentElement("beforeend", menu);
+  inner.insertAdjacentElement("beforeend", code);
+  inner.insertAdjacentElement("beforeend", form);
+  reserve.classList.add("reserve");
+  reserve.insertAdjacentElement("beforeend", back);
+  reserve.insertAdjacentElement("beforeend", inner);
+  wrapper.insertAdjacentElement("beforeend",reserve);
+  orderedInner.classList.add("hidden");
+  back.addEventListener('click' ,() => {
+    reserve.remove();
+    orderedInner.classList.remove("hidden");
+  });
+}
+
 
 // タブバー
 const tabbar = document.getElementById('js-tabbar');
