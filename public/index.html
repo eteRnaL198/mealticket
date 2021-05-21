@@ -11,20 +11,34 @@
 </head>
 <body>
   <header class="header">Meal Ticket</header>
-  <main class="main">
+  <main class="main" id="js-main">
 
-    <div class="menuCard_wrapper hidden" id="menuCard_wrapper">
+    <div class="menuCard_wrapper" id="js-menuCard_wrapper">
     </div>
-
+<!-- 
+    <div class="menuDetail_backScreen" id="js-menuDetail_backScreen"></div>
     <div class="menuDetail">
       <p class="menuDetail_name">唐揚げ定食</p> 
       <p class="menuDetail_num">未受取人数 10</p>
       <p class="menuDetail_allergie">アレルギー</p>
       <p class="menuDetail_calorie">カロリー</p>
       <p class="menuDetail_price">500円</p>
-      <button class="menuDetail_order">注文</button>
+      <button class="menuDetail_order" id="js-menuDetail_button">注文</button>
+    </div> -->
+
+    <div class="ordered_wrapper hidden" id="js-ordered_wrapper">
+      <p class="ordered_none">発券済みの食券はありません</p>
+      <!-- <div class="ordered">
+        <p class="ordered_title">唐揚げ定食</p>
+        <button class="ordered_button">受け取り</button>
+      </div>
+      <div class="ordered">
+        <p class="ordered_title">唐揚げ定食</p>
+        <button class="ordered_button">受け取り</button>
+      </div> -->
     </div>
-    
+
+
     <!-- <div class="reserve">
       <p class="menu">唐揚げ定食</p>
       <div class="code">
@@ -37,14 +51,9 @@
       </div>
     </div> -->
 
-    <!-- <div class="ordered">
-      <p class="ordered_title">唐揚げ定食</p>
-      <button class="ordered_button">受け取り</button>
-    </div> -->
-
   </main>
-  <div class="tabbar">
-    <button class="tabbar_button">
+  <div class="tabbar" id="js-tabbar">
+    <button class="tabbar_button pressed">
       <i class="fas fa-utensils tabbar_icon"></i>
       menu
     </button>

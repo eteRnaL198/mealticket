@@ -189,23 +189,83 @@ const writeData = () => {
 }
 // writeData();
 
-const ticketsRef = firebase.database().ref('tickets/menu');
-ticketsRef.once('value', snapshot => {
+// メニュー表示
+const menuRef = firebase.database().ref('tickets/menu');
+menuRef.once('value', snapshot => {
   const data = snapshot.val();
   console.log(data);
   for(let i=0; i<data.length; i++) {
-    const wrapper = document.getElementById("menuCard_wrapper");
+    const wrapper = document.getElementById("js-menuCard_wrapper");
     const name = document.createElement("p");
+    const number = document.createElement("p");
     const price = document.createElement("p");
     const card = document.createElement("button");
     name.classList.add("menuCard_name");
     name.innerHTML = data[i].name;
+    number.classList.add("menuCard_number");
+    number.innerHTML = "未受取数: " + data[i].number;
     price.classList.add("menuCard_price");
     price.innerHTML = data[i].price + "円";
     card.classList.add("menuCard");
     card.setAttribute("id", `menuCard-${i}`);
+    const args = [data[i].name, data[i].number, data[i].price]
+    card.addEventListener('click', () => displayDetail(args));
     card.insertAdjacentElement("beforeend", name);
+    card.insertAdjacentElement("beforeend", number);
     card.insertAdjacentElement("beforeend", price);
     wrapper.insertAdjacentElement('beforeend', card);
   }
 });
+
+// メニュー詳細表示
+const displayDetail = (args) => {
+  const main = document.getElementById('js-main');
+  const modal = document.createElement('div');
+  const back = document.createElement('div');
+  const name = document.createElement('p');
+  const num = document.createElement('p');
+  const price = document.createElement('p');
+  const orderButton = document.createElement('button');
+  modal.classList.add("menuDetail");
+  back.classList.add("menuDetail_backScreen");
+  name.classList.add("menuDetail_name");
+  name.innerHTML = args[0];
+  num.classList.add("menuDetail_num");
+  num.innerHTML = "未受取人数" + args[1];
+  price.classList.add("menuDetail_price");
+  price.innerHTML = args[2] + "円";
+  orderButton.classList.add("menuDetail_order");
+  orderButton.innerHTML = '注文';
+  modal.insertAdjacentElement("beforeend", name);
+  modal.insertAdjacentElement("beforeend", num);
+  modal.insertAdjacentElement("beforeend", price);
+  modal.insertAdjacentElement("beforeend", orderButton);
+  main.insertAdjacentElement("beforeend", back);
+  main.insertAdjacentElement("beforeend", modal);
+
+  back.addEventListener('click', () => {
+    back.remove();
+    modal.remove();
+  })
+}
+
+// タブバー
+const tabbar = document.getElementById('js-tabbar');
+buttons = tabbar.children;
+Array.from(buttons).forEach((elem, idx) => {
+  const menu = document.getElementById('js-menuCard_wrapper');
+  const ordered = document.getElementById('js-ordered_wrapper');
+  const wrappers = [menu, ordered];
+  elem.addEventListener("click", () => {
+    if (!Array.from(buttons)[idx].classList.contains("pressed")) {
+      Array.from(buttons).forEach(elem => {
+        elem.classList.remove('pressed');
+      })
+      elem.classList.add("pressed");
+      wrappers.forEach(elem => {
+        elem.classList.add('hidden');
+      })
+      wrappers[idx].classList.remove('hidden');
+    }
+  })
+})
