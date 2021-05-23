@@ -78,12 +78,15 @@ const displayDetail = ([arg_name, arg_issued, arg_price, arg_idx]) => {
     modal.remove();
   });
   orderButton.addEventListener('click', () => {
-    const code = "w4FimR5u";
+    const code = Math.random().toString(32).substring(2,9);
     const auth_num = Math.floor((Math.random() * 9) + 1);
-    const ticket_args = [arg_name, code, auth_num];
-    console.log("auth_num:"+ auth_num);
-    // 確認コード，受け取り番号をデータベースに保存
-    displayTicket(ticket_args);
+    console.log("code: "+code+", auth_num: "+ auth_num);
+    // 確認コード，受け取り番号をデータベースに追加
+    displayTicket([arg_name, arg_issued, arg_price, arg_idx, code, auth_num]);
+    firebase.database().ref('tickets/menu/'+arg_idx).once('value', snapshot => {
+      const data = snapshot.val();
+      arg_issued = data.issued;
+    });
     firebase.database().ref('tickets/menu/' + arg_idx).update(
       {
         name: arg_name,
@@ -92,10 +95,14 @@ const displayDetail = ([arg_name, arg_issued, arg_price, arg_idx]) => {
       }
     );
   });
+  firebase.database().ref('tickets/menu/'+arg_idx).on('value', snapshot => {
+    const data = snapshot.val();
+    num.innerHTML = "未受取数: " + data.issued;
+  });
 }
 
 //食券表示
-const displayTicket = ([arg_name, arg_code, arg_auth_num]) => {
+const displayTicket = ([arg_name, arg_issued, arg_price, arg_idx, arg_code, arg_auth_num]) => {
   const back = document.getElementById('js-backScreen');
   const modal = document.getElementById('js-menuDetail');
   const inner = document.getElementById('js-ordered_inner');
@@ -117,16 +124,17 @@ const displayTicket = ([arg_name, arg_code, arg_auth_num]) => {
     modal.remove();
   }
   button.addEventListener("click", () => 
-    displayReserve([arg_name, arg_code, arg_auth_num])
+    displayReserve([arg_name, arg_issued, arg_price, arg_idx, arg_code, arg_auth_num, card])
   );
 }
 
 
 //受け取り
-const displayReserve = ([arg_name, arg_code, arg_auth_num]) => {
+const displayReserve = ([arg_name, arg_issued, arg_price, arg_idx, arg_code, arg_auth_num, arg_elem]) => {
   const wrapper = document.getElementById("js-ordered_wrapper");
   const orderedInner = document.getElementById("js-ordered_inner");
-  const reserve = document.createElement("p");
+  const none = document.getElementById("js-ordered_none");
+  const reserve = document.createElement("div");
   const back = document.createElement("button");
   const inner = document.createElement("div");
   const menu = document.createElement("p")
@@ -177,8 +185,24 @@ const displayReserve = ([arg_name, arg_code, arg_auth_num]) => {
     orderedInner.classList.remove("hidden");
   });
   button.addEventListener('click', () => {
-    if(parseInt(select.value) === arg_auth_num) console.log("受け取り完了");
-    // --発券数
+    if(parseInt(select.value) === arg_auth_num) {
+      console.log("受け取り完了");
+      orderedInner.classList.remove("hidden");
+      arg_elem.remove();
+      reserve.remove();
+      if(orderedInner.children.length === 1) none.classList.remove("hidden");
+    };
+    firebase.database().ref('tickets/menu/'+arg_idx).once('value', snapshot => {
+      const data = snapshot.val();
+      arg_issued = data.issued;
+    });
+    firebase.database().ref('tickets/menu/' + arg_idx).update(
+      {
+        name: arg_name,
+        issued: --arg_issued,
+        price: arg_price,
+      }
+    );
   });
 }
 
