@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-search-pseudo-elementsn></script>
+  <link rel="stylesheet" href="./assets/styles/destyle.min.css">
+  <link rel="stylesheet" href="./assets/styles/style.min.css">
+  <title>Meal Ticket</title>
+</head>
+<body>
+  <header class="header">Meal Ticket</header>
+  <main class="main" id="js-main">
+
+    <div class="menuCard_wrapper" id="js-menuCard_wrapper">
+    </div>
+<!-- 
+    <div class="menuDetail_backScreen" id="js-menuDetail_backScreen"></div>
+    <div class="menuDetail">
+      <p class="menuDetail_name">唐揚げ定食</p> 
+      <p class="menuDetail_num">未受取人数 10</p>
+      <p class="menuDetail_allergie">アレルギー</p>
+      <p class="menuDetail_calorie">カロリー</p>
+      <p class="menuDetail_price">500円</p>
+      <button class="menuDetail_order" id="js-menuDetail_button">注文</button>
+    </div> -->
+
+    <div class="ordered_wrapper hidden" id="js-ordered_wrapper">
+      <div class="ordered_inner" id="js-ordered_inner">
+        <p class="ordered_none" id="js-ordered_none">発券済みの食券はありません</p>
+      </div>
+    </div>
+
+  </main>
+  <div class="tabbar" id="js-tabbar">
+    <button class="tabbar_button pressed">
+      <i class="fas fa-utensils tabbar_icon"></i>
+      menu
+    </button>
+    <button class="tabbar_button">
+      <i class="fas fa-clipboard-list tabbar_icon"></i>
+      order
+    </button>
+  </div>
+</body>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+<script src="./assets/js/script.min.js"></script>
+<!-- <script src="./assets/js/data.js"></script> -->
+</html>
