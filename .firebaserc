@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "mealticket-1585f"
+  },
+  "targets": {
+    "mealticket-1585f": {
+      "hosting": {
+        "mealticketshopside": [
+          "mealticketshopside"
+        ],
+        "mealticket": [
+          "mealticket-1585f"
+        ]
+      }
+    }
   }
 }

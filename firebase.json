@@ -2,12 +2,23 @@
   "database": {
     "rules": "database.rules.json"
   },
-  "hosting": {
-    "public": "public",
+  "hosting": [{
+    "target": "mealticket",
+    "public": "app/customerside",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ]
+  },
+  {
+    "target": "mealticketshopside",
+    "public": "app/shopside",
+    "ignore": [
+      "firebsae.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
+]
 }
