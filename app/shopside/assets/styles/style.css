@@ -34,6 +34,8 @@ html {
   letter-spacing: 1px;
 }
 .menu_inner {
+  display: flex;
+  flex-direction: column;
   overflow-y: scroll;
   margin-bottom: 8px;
 }

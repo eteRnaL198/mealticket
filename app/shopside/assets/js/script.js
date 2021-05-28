@@ -1,3 +1,5 @@
+"use strict";
+
 const config = {
   apiKey: "AIzaSyCXkqAFgbz3hP6LLpQt11iJzXcXrc8MDgU",
   authDomain: "mealticket-1585f.firebaseapp.com",
@@ -10,25 +12,40 @@ const config = {
 };
 firebase.initializeApp(config);
 
-firebase.database().ref('tickets/menu').once('value', snapshot => {
-  const data = snapshot.val();
-  const buttons = data.map((menu, idx) => {
-    const inner = document.getElementById('js-menuInner');
-    const button = document.createElement('button');
-    button.classList.add('menu_button');
-    button.innerHTML = menu.name;
-    button.addEventListener('click', () => {
-      displayTicket(menu.name, idx);
-    })
-    inner.insertAdjacentElement("beforeend", button);
-  });
-  const toggleButton = (thisButton) => {
-    buttons.forEach(button, () => {
-      button.classList.remove('pressed');
+const getMenus = async () => {
+  let menus;
+  firebase.database().ref('tickets/menu').once('value', snapshot => {
+    const data = snapshot.val();
+    menus = data.map((menu, idx) => {
+      const inner = document.getElementById('js-menuInner');
+      const button = document.createElement('button');
+      button.classList.add('menu_button');
+      button.innerHTML = menu.name;
+      button.addEventListener('click', () => {
+        displayTicket(menu.name, idx);
+      })
+      inner.insertAdjacentElement("beforeend", button);
+      return button;
     });
-    thisButton.classList.add('pressed');
-  }
-});
+    
+  });
+  return menus;
+};
+
+(async () => {
+  const buttons = await getMenus();
+  console.log(buttons);
+  // const toggleButton = (thisButton) => {
+  //   buttons.forEach(button, () => {
+  //     button.classList.remove('pressed');
+  //   });
+  //   thisButton.classList.add('pressed');
+  // }
+  // await buttons.forEach(button => {
+  //   button.addEventListener('click', toggleButton(button));
+  // })
+})();
+
 
 const displayTicket = (name, idx) => {
   const inner = document.getElementById('js-ticketInner');
