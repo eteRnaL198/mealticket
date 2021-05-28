@@ -12,11 +12,11 @@ const config = {
 };
 firebase.initializeApp(config);
 
-const getMenus = async () => {
-  let menus;
-  firebase.database().ref('tickets/menu').once('value', snapshot => {
+const getMenuButtons = async () => {
+  let buttons;
+  await firebase.database().ref('tickets/menu').once('value', snapshot => {
     const data = snapshot.val();
-    menus = data.map((menu, idx) => {
+    buttons = data.map((menu, idx) => {
       const inner = document.getElementById('js-menuInner');
       const button = document.createElement('button');
       button.classList.add('menu_button');
@@ -27,54 +27,53 @@ const getMenus = async () => {
       inner.insertAdjacentElement("beforeend", button);
       return button;
     });
-    
   });
-  return menus;
+  return buttons;
 };
 
 (async () => {
-  const buttons = await getMenus();
+  const buttons = await getMenuButtons();
   console.log(buttons);
-  // const toggleButton = (thisButton) => {
-  //   buttons.forEach(button, () => {
-  //     button.classList.remove('pressed');
-  //   });
-  //   thisButton.classList.add('pressed');
-  // }
-  // await buttons.forEach(button => {
-  //   button.addEventListener('click', toggleButton(button));
-  // })
+  buttons.forEach((button) => {
+    const toggleButton = (thisButton) => {
+      buttons.forEach(button => {
+        button.classList.remove('pressed');
+      });
+      thisButton.classList.add('pressed');
+    }
+    button.addEventListener('click', () => toggleButton(button));
+  });
 })();
 
 
-const displayTicket = (name, idx) => {
-  const inner = document.getElementById('js-ticketInner');
-  while(inner.firstChild){
-    inner.removeChild(inner.firstChild);
-  }
+const displayTicket = (name, arg_idx) => {
   const title = document.getElementById('js-ticketTitle');
   title.innerHTML = name;
-  firebase.database().ref('tickets/menu/'+idx+'/issued').on('value', snapshot => {
+  firebase.database().ref('tickets/menu/'+arg_idx+'/issued').on('value', snapshot => {
+    const inner = document.getElementById('js-ticketInner');
+    while(inner.firstChild){
+      inner.removeChild(inner.firstChild);
+    }
     const issued = snapshot.val();
     if(issued.length > 1) {
       issued.forEach((val,idx) => {
-      if(idx !== 0) {
-        const inner = document.getElementById('js-ticketInner');
-        const card = document.createElement('div');
-        const codeText = document.createElement('p');
-        const code = document.createElement('p');
-        const num = document.createElement('p');
-        codeText.innerHTML = '受け取りコード: ';
-        code.classList.add('ticket_code');
-        code.innerHTML = val.code;
-        num.innerHTML = '確認番号: ' + val.auth_num;
-        card.classList.add('ticket_card');
-        card.insertAdjacentElement("beforeend", codeText);
-        card.insertAdjacentElement("beforeend", code);
-        card.insertAdjacentElement("beforeend", num);
-        inner.insertAdjacentElement("beforeend",card);
-      }
-    })
-  }
+        if(idx !== 0) {
+          const inner = document.getElementById('js-ticketInner');
+          const card = document.createElement('div');
+          const codeText = document.createElement('p');
+          const code = document.createElement('p');
+          const num = document.createElement('p');
+          codeText.innerHTML = '受け取りコード: ';
+          code.classList.add('ticket_code');
+          code.innerHTML = val.code;
+          num.innerHTML = '確認番号: ' + val.auth_num;
+          card.classList.add('ticket_card');
+          card.insertAdjacentElement("beforeend", codeText);
+          card.insertAdjacentElement("beforeend", code);
+          card.insertAdjacentElement("beforeend", num);
+          inner.insertAdjacentElement("beforeend",card);
+        }
+      })
+    }
   });
 }
