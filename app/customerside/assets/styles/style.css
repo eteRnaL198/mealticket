@@ -79,7 +79,6 @@ body {
   border-radius: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   left: 50%;
   position: absolute;
   padding: 48px 40px;
@@ -97,28 +96,23 @@ body {
   width: 130%;
 }
 .menuDetail_name {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 .menuDetail_num{
   margin-bottom: 8px;
 }
-.menuDetail_allergie {
-  align-self: flex-start;
-  font-size: 1.1rem;
+.menuDetail_price {
+  font-size: 1.6rem;
   margin-bottom: 8px;
-}
-.menuDetail_calorie {
-  align-self: flex-start;
-  font-size: 1.1rem;
-  margin-bottom: 40px;
 }
 .menuDetail_order {
   background-color: orange;
   border-radius: 8px;
   padding: 8px;
+  width: 70%;
+  text-align: center;
 }
 
 
